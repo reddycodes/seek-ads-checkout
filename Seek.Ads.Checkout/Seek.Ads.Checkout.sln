@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seek.Ads.Checkout.Tests", "Seek.Ads.Checkout.Tests\Seek.Ads.Checkout.Tests.csproj", "{C0C7B23E-20C9-4893-98E2-9091686C60D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seek.Ads.Checkout.Domain", "Seek.Checkout.Domain\Seek.Ads.Checkout.Domain.csproj", "{D9794A5C-B080-4E0E-A979-99DE0081B300}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0C7B23E-20C9-4893-98E2-9091686C60D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C7B23E-20C9-4893-98E2-9091686C60D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C7B23E-20C9-4893-98E2-9091686C60D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C7B23E-20C9-4893-98E2-9091686C60D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9794A5C-B080-4E0E-A979-99DE0081B300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9794A5C-B080-4E0E-A979-99DE0081B300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9794A5C-B080-4E0E-A979-99DE0081B300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9794A5C-B080-4E0E-A979-99DE0081B300}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07D090F4-5349-45C5-9C0A-FC0B7802B395}
+	EndGlobalSection
+EndGlobal
