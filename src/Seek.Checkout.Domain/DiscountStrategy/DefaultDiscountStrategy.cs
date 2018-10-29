@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Seek.Ads.Checkout.Domain.PricingRules;
 using System.Collections.Generic;
-using System.Text;
-using Seek.Ads.Checkout.Domain.PricingRules;
 
 namespace Seek.Ads.Checkout.Domain.DiscountStrategy
 {

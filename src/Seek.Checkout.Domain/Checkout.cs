@@ -1,14 +1,12 @@
 ﻿using Seek.Ads.Checkout.Domain.PricingRules;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace Seek.Ads.Checkout.Domain
 {
     public class Checkout
     {
-        private List<BaseAd> items;
+        private readonly List<BaseAd> items;
         private readonly List<IPricingRule> pricingRules;
 
         public Checkout()
@@ -36,11 +34,11 @@ namespace Seek.Ads.Checkout.Domain
             items.Add(ad);
         }
 
-        public double Total()
+        public decimal Total()
         {
-            var total = items.Sum(x => x.GetPrice());
+            var total = items.Sum(x => x.Price);
 
-            var discount = 0.0;
+            var discount = 0.0m;
 
             if (pricingRules != null)
             {
@@ -50,7 +48,6 @@ namespace Seek.Ads.Checkout.Domain
 
                 }
             }
-
             return total - discount;
         }
     }

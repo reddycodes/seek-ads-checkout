@@ -1,19 +1,16 @@
 ﻿using Seek.Ads.Checkout.Domain;
 using Seek.Ads.Checkout.Domain.Ads;
 using Seek.Checkout.Domain.Customer;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Seek.Ads.Checkout.Tests
 {
     public class SecondBiteDiscountStrategyUnitTests
     {
-        [Fact]
-        public void SecondBiteCustomer_CheckTotal()
+        [Theory]
+        [InlineData("SecondBite", 934.97)]
+        public void SecondBiteCustomer_CheckTotal(string name, decimal expected)
         {
-
             var adFactory = new AdFactory();
 
             var discountStrategyFactory = new DiscountStrategyFactory();
@@ -26,7 +23,7 @@ namespace Seek.Ads.Checkout.Tests
 
             var item4 = adFactory.CreateAd(typeof(PremiumAd));
 
-            var customer = new Customer("SecondBite");
+            var customer = new Customer(name);
 
             var discountStrategy = discountStrategyFactory.GetDiscountStrategy(customer);
 
@@ -39,10 +36,7 @@ namespace Seek.Ads.Checkout.Tests
             checkout.Add(item3);
             checkout.Add(item4);
 
-
-            var total = checkout.Total();
-
-            Assert.Equal(934.97, total);
+            Assert.Equal(expected, checkout.Total());
 
         }
     }

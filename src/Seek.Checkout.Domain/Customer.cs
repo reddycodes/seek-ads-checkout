@@ -1,12 +1,8 @@
-﻿using Seek.Ads.Checkout.Domain.PricingRules;
-using System;
-using System.Collections.Generic;
-
-namespace Seek.Checkout.Domain.Customer
+﻿namespace Seek.Checkout.Domain.Customer
 {
     public class Customer
     {
-        public string Name { get; set; }
+        public string Name { get; }
 
         public Customer(string name)
         {

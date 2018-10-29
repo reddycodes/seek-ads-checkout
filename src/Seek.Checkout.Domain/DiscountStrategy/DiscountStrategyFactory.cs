@@ -1,9 +1,5 @@
 ﻿using Seek.Ads.Checkout.Domain.DiscountStrategy;
-using Seek.Ads.Checkout.Domain.PricingRules;
 using Seek.Checkout.Domain.Customer;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Seek.Ads.Checkout.Domain
 {
@@ -13,11 +9,11 @@ namespace Seek.Ads.Checkout.Domain
         {
             switch(customer.Name.ToLower())
             {
-                case "myer":
+                case Utils.Constants.Customers.Myer:
                     return new MyerDiscountStrategy();
-                case "secondbite":
+                case Utils.Constants.Customers.SecondBite:
                     return new SecondBiteDiscountStrategy();
-                case "axil coffee roasters":
+                case Utils.Constants.Customers.AxilCoffeeRoasters:
                     return new AxilCoffeeRoastersDiscountStrategy();
                 default:
                     return new DefaultDiscountStrategy();

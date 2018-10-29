@@ -1,19 +1,16 @@
 ﻿using Seek.Ads.Checkout.Domain;
 using Seek.Ads.Checkout.Domain.Ads;
 using Seek.Checkout.Domain.Customer;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Seek.Ads.Checkout.Tests
 {
     public class MyerDiscountStrategyUnitTests
     {
-        [Fact]
-        public void MyerCustomer_CheckTotal()
+        [Theory]
+        [InlineData("Myer", 1951.94)]
+        public void Verify_MyerCustomer__Total(string name, decimal expected)
         {
-
             var adFactory = new AdFactory();
 
             var discountStrategyFactory = new DiscountStrategyFactory();
@@ -32,7 +29,7 @@ namespace Seek.Ads.Checkout.Tests
 
             var item7 = adFactory.CreateAd(typeof(StandoutAd));
 
-            var customer = new Customer("Myer");
+            var customer = new Customer(name);
 
             var discountStrategy = discountStrategyFactory.GetDiscountStrategy(customer);
 
@@ -48,10 +45,7 @@ namespace Seek.Ads.Checkout.Tests
             checkout.Add(item6);
             checkout.Add(item7);
 
-            var total = checkout.Total();
-
-            Assert.Equal(1951.94, Math.Round(total,2));
-
+            Assert.Equal(expected, checkout.Total());
         }
     }
 }

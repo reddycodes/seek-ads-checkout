@@ -1,19 +1,16 @@
 ﻿using Seek.Ads.Checkout.Domain;
 using Seek.Ads.Checkout.Domain.Ads;
 using Seek.Checkout.Domain.Customer;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Seek.Ads.Checkout.Tests
 {
     public class AxilCoffeeRoastersDiscountStrategyUnitTests
     {
-        [Fact]
-        public void AxilCustomer_CheckTotal()
+        [Theory]
+        [InlineData("Axil Coffee Roasters", 1294.96)]
+        public void Verify_AxilCustomer_Total(string name, decimal expected)
         {
-
             var adFactory = new AdFactory();
 
             var discountStrategyFactory = new DiscountStrategyFactory();
@@ -26,7 +23,7 @@ namespace Seek.Ads.Checkout.Tests
 
             var item4 = adFactory.CreateAd(typeof(PremiumAd));
 
-            var customer = new Customer("Axil Coffee Roasters");
+            var customer = new Customer(name);
 
             var discountStrategy = discountStrategyFactory.GetDiscountStrategy(customer);
 
@@ -39,10 +36,7 @@ namespace Seek.Ads.Checkout.Tests
             checkout.Add(item3);
             checkout.Add(item4);
 
-            var total = checkout.Total();
-
-            Assert.Equal(1294.96, total);
-
+            Assert.Equal(expected, checkout.Total());
         }
     }
 }

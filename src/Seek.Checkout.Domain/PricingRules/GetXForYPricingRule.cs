@@ -8,9 +8,9 @@ namespace Seek.Ads.Checkout.Domain.PricingRules
 {
     public class GetXForYPricingRule : IPricingRule
     {
-        private int getAmount;
-        private int forAmount;
-        private Type adType;
+        private readonly int getAmount;
+        private readonly int forAmount;
+        private readonly Type adType;
 
         public GetXForYPricingRule(int _getAmount, int _forAmount, Type _adType)
         {
@@ -19,9 +19,9 @@ namespace Seek.Ads.Checkout.Domain.PricingRules
             adType = _adType;
         }
 
-        public double CalculateDiscount(List<BaseAd> items)
+        public decimal CalculateDiscount(List<BaseAd> items)
         {
-            var totalDiscount = 0.0;
+            var totalDiscount = 0.0m;
             var matchingItems = items.Where(x => x.GetType() == adType);
             var totalMatchingItems = matchingItems.Count();
 
@@ -29,7 +29,7 @@ namespace Seek.Ads.Checkout.Domain.PricingRules
             {
                 var totalDeals = totalMatchingItems / getAmount;
 
-                var pricePerItem = matchingItems.FirstOrDefault().GetPrice();
+                var pricePerItem = matchingItems.FirstOrDefault().Price;
 
                 var discountPerDeal = pricePerItem * (getAmount - forAmount);
 
