@@ -13,3 +13,5 @@ The solution utilised some of the design patterns such as Factory Pattern to hel
 
 The solution is built following TDD techniques.
 
+Below is the solution design diagram:
+![alt text](https://raw.githubusercontent.com/reddycodes/seek-ads-checkout/master/Design%20Diagram.png)
