@@ -8,6 +8,7 @@
         public decimal Price => price;
 
         public string Description => description;
+
         public BaseAd(string _desc, decimal _price)
         {
             description = _desc;
