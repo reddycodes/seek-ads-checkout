@@ -197,7 +197,7 @@ namespace Seek.Ads.Checkout.Tests
             var adFactory = new AdFactory();
 
             var pricingRule1 = new DiscountPricingRule(typeof(StandoutAd), 22.99m);
-            var pricingRule2 = new GetXForYPricingRule(3,2,typeof(ClassicAd));
+            var pricingRule2 = new GetXForYPricingRule(3, 2, typeof(ClassicAd));
 
             var pricingRules = new List<IPricingRule>();
             pricingRules.Add(pricingRule1);
@@ -221,6 +221,36 @@ namespace Seek.Ads.Checkout.Tests
             var total = checkout.Total();
 
             Assert.Equal(839.98m, total);
+        }
+
+        [Fact]
+        public void Verify_PricingRule_DiscountOfYPriceForXItems()
+        {
+            var adFactory = new AdFactory();
+
+            var pricingRule1 = new DiscountOfYForXItems(typeof(PremiumAd), 15m,4);
+
+            var pricingRules = new List<IPricingRule>();
+            pricingRules.Add(pricingRule1);
+
+            var checkout = new Domain.Checkout(pricingRules);
+
+            var item1 = adFactory.CreateAd(typeof(PremiumAd));
+
+            var item2 = adFactory.CreateAd(typeof(PremiumAd));
+
+            var item3 = adFactory.CreateAd(typeof(PremiumAd));
+
+            var item4 = adFactory.CreateAd(typeof(PremiumAd));
+
+            checkout.Add(item1);
+            checkout.Add(item2);
+            checkout.Add(item3);
+            checkout.Add(item4);
+
+            var total = checkout.Total();
+
+            Assert.Equal(1519.96m, total);
         }
     }
 }
